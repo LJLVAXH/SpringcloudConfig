@@ -1,1 +1,3 @@
-redis=aba
+redis:
+  host: localhost
+  port: 7878
