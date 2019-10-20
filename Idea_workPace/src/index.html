@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-2.2.3.min.js"></script>
+    <style>
+        .btn{
+
+        }
+    </style>
+</head>
+<body>
+<button class="T-getCode">发送验证码</button>
+</body>
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        //获取短信验证码
+        var validCode = true;
+        $(".T-getCode").click(function () {
+            var time = 5;
+            var $code = $(this);
+            if (validCode) {
+                $code.addClass("btn");
+                validCode = false;
+                var t = setInterval(function () {
+                    $code.attr({"disabled":"disabled"});
+                    time--;
+                    $code.html(time + "秒");
+                    if (time == 0) {
+                        $code.removeAttr("disabled");
+                        $code.removeClass("btn");
+                        clearInterval(t);
+                        $code.html("重新获取");
+                        validCode = true;
+                    }
+                }, 1000)
+            }
+        })
+    })
+</script>
+</html>
